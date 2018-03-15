@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_scope_privilege">
+    <sys_scope_privilege action="INSERT_OR_UPDATE">
+        <operation>execute</operation>
+        <source_scope display_value="esm_sp_esm_main">3a8ff870dbc41b00fbaa7d668c9619ff</source_scope>
+        <status>requested</status>
+        <sys_class_name>sys_scope_privilege</sys_class_name>
+        <sys_created_by>divya</sys_created_by>
+        <sys_created_on>2018-02-28 13:09:22</sys_created_on>
+        <sys_id>ae0a2535dbe4db407b9b9ea3db9619d4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>to execute scriptables</sys_name>
+        <sys_package display_value="esm_sp_esm_main" source="x_infte_esm_sp_esm">3a8ff870dbc41b00fbaa7d668c9619ff</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="esm_sp_esm_main">3a8ff870dbc41b00fbaa7d668c9619ff</sys_scope>
+        <sys_update_name>sys_scope_privilege_ae0a2535dbe4db407b9b9ea3db9619d4</sys_update_name>
+        <sys_updated_by>divya</sys_updated_by>
+        <sys_updated_on>2018-02-28 13:09:22</sys_updated_on>
+        <target_name>to execute scriptables</target_name>
+        <target_scope display_value="esm_sp_esm_main_global">e28295fcdbc41b00fbaa7d668c9619d2</target_scope>
+        <target_type>scriptable</target_type>
+    </sys_scope_privilege>
+</record_update>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_instance">
+    <sp_instance action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <glyph/>
+        <id/>
+        <order>1</order>
+        <roles/>
+        <short_description/>
+        <size>md</size>
+        <sp_column display_value="1">79e0bb87db545740fbaa7d668c96196c</sp_column>
+        <sp_widget display_value="Esm Announcemenmt Widget">467dabc3db545740fbaa7d668c961983</sp_widget>
+        <sys_class_name>sp_instance</sys_class_name>
+        <sys_created_by>vaidehi</sys_created_by>
+        <sys_created_on>2018-02-20 09:55:07</sys_created_on>
+        <sys_id>73e0bb87db545740fbaa7d668c9619d8</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="esm_sp_esm_main" source="x_infte_esm_sp_esm">3a8ff870dbc41b00fbaa7d668c9619ff</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="esm_sp_esm_main">3a8ff870dbc41b00fbaa7d668c9619ff</sys_scope>
+        <sys_update_name>sp_instance_73e0bb87db545740fbaa7d668c9619d8</sys_update_name>
+        <sys_updated_by>DIVYA</sys_updated_by>
+        <sys_updated_on>2018-03-13 06:26:56</sys_updated_on>
+        <title/>
+        <url/>
+        <widget_parameters><![CDATA[{
+	"title1": {
+		"value": "Top News",
+		"displayValue": "Top News"
+	},
+	"icon1": {
+		"value": "",
+		"displayValue": ""
+	},
+	"profile": {
+		"value": "ace32957db289f407b9b9ea3db961953",
+		"displayValue": "Power User"
+	},
+	"persona_color": {
+		"value": "rgba(63, 50, 80, 0.8)",
+		"displayValue": "rgba(63, 50, 80, 0.8)"
+	}
+}]]></widget_parameters>
+    </sp_instance>
+    <sys_translated_text action="delete_multiple" query="documentkey=73e0bb87db545740fbaa7d668c9619d8"/>
+</record_update>

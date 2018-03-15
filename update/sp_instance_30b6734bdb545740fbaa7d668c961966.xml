@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_instance">
+    <sp_instance action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <glyph/>
+        <id/>
+        <order>1</order>
+        <roles/>
+        <short_description/>
+        <size>md</size>
+        <sp_column display_value="4">3de0bb87db545740fbaa7d668c961970</sp_column>
+        <sp_widget display_value="ESM Need Help Widget">ac667f0bdb545740fbaa7d668c96197b</sp_widget>
+        <sys_class_name>sp_instance</sys_class_name>
+        <sys_created_by>vaidehi</sys_created_by>
+        <sys_created_on>2018-02-20 10:20:18</sys_created_on>
+        <sys_id>30b6734bdb545740fbaa7d668c961966</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="esm_sp_esm_main" source="x_infte_esm_sp_esm">3a8ff870dbc41b00fbaa7d668c9619ff</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="esm_sp_esm_main">3a8ff870dbc41b00fbaa7d668c9619ff</sys_scope>
+        <sys_update_name>sp_instance_30b6734bdb545740fbaa7d668c961966</sys_update_name>
+        <sys_updated_by>DIVYA</sys_updated_by>
+        <sys_updated_on>2018-03-05 07:14:01</sys_updated_on>
+        <title/>
+        <url/>
+        <widget_parameters><![CDATA[{
+	"title4": {
+		"value": "Need Support",
+		"displayValue": "Need Support"
+	},
+	"icon4": {
+		"value": "esm_sp_chaticon.png",
+		"displayValue": "esm_sp_chaticon.png"
+	},
+	"logAnIssue": {
+		"value": "3f1dd0320a0a0b99000a53f7604a2ef9",
+		"displayValue": "Create Incident"
+	},
+	"chat": {
+		"value": "",
+		"displayValue": ""
+	}
+}]]></widget_parameters>
+    </sp_instance>
+    <sys_translated_text action="delete_multiple" query="documentkey=30b6734bdb545740fbaa7d668c961966"/>
+</record_update>

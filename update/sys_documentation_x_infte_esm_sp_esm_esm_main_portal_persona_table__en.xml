@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_documentation element="" label="ESM Main Portal Persona Table" language="en" table="x_infte_esm_sp_esm_esm_main_portal_persona_table">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element/>
+            <help/>
+            <hint/>
+            <label>ESM Main Portal Persona Table</label>
+            <language>en</language>
+            <name>x_infte_esm_sp_esm_esm_main_portal_persona_table</name>
+            <plural>ESM Main Portal Persona Tables</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>divya</sys_created_by>
+            <sys_created_on>2018-03-05 04:15:21</sys_created_on>
+            <sys_id>19df51d3db289f407b9b9ea3db961987</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>ESM Main Portal Persona Table</sys_name>
+            <sys_package display_value="esm_sp_esm_main" source="x_infte_esm_sp_esm">3a8ff870dbc41b00fbaa7d668c9619ff</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="esm_sp_esm_main">3a8ff870dbc41b00fbaa7d668c9619ff</sys_scope>
+            <sys_update_name>sys_documentation_x_infte_esm_sp_esm_esm_main_portal_persona_table__en</sys_update_name>
+            <sys_updated_by>divya</sys_updated_by>
+            <sys_updated_on>2018-03-05 04:15:21</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_css">
+    <sp_css action="INSERT_OR_UPDATE">
+        <css>.typeahead-search input {&#13;
+  background: rgba(255, 255, 255, 0.7);&#13;
+}&#13;
+&#13;
+#homepage-search h1 { &#13;
+  color: #fff;&#13;
+  font-weight: 100;&#13;
+}&#13;
+&#13;
+#homepage-search h4 {&#13;
+  color: #fff;&#13;
+  font-weight: 300;&#13;
+}&#13;
+&#13;
+.bg-top {&#13;
+  background-position: top center !important;&#13;
+}&#13;
+</css>
+        <name>esm-sp-customer-service-styles.css</name>
+        <sys_class_name>sp_css</sys_class_name>
+        <sys_created_by>divya</sys_created_by>
+        <sys_created_on>2018-01-31 11:40:54</sys_created_on>
+        <sys_id>5a498578dbc41b00fbaa7d668c9619a0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>esm-sp-customer-service-styles.css</sys_name>
+        <sys_package display_value="esm_sp_esm_main" source="x_infte_esm_sp_esm">3a8ff870dbc41b00fbaa7d668c9619ff</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="esm_sp_esm_main">3a8ff870dbc41b00fbaa7d668c9619ff</sys_scope>
+        <sys_update_name>sp_css_5a498578dbc41b00fbaa7d668c9619a0</sys_update_name>
+        <sys_updated_by>divya</sys_updated_by>
+        <sys_updated_on>2018-01-31 11:40:54</sys_updated_on>
+    </sp_css>
+</record_update>

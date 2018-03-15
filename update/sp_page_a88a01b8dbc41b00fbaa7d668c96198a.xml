@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_page">
+    <sp_page action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <css>.container{&#13;
+  width : 100%;&#13;
+}&#13;
+&#13;
+.cms_col1{&#13;
+  padding : 0px;&#13;
+}&#13;
+.cms_col2{&#13;
+  padding : 0px;&#13;
+}&#13;
+&#13;
+.cms_col3{&#13;
+  padding : 0px;&#13;
+}&#13;
+&#13;
+&#13;
+&#13;
+&#13;
+&#13;
+&#13;
+section.body{&#13;
+  padding-top : 0px;&#13;
+}</css>
+        <draft>false</draft>
+        <dynamic_title_structure/>
+        <id>ess</id>
+        <internal>false</internal>
+        <public>false</public>
+        <roles/>
+        <short_description/>
+        <sys_class_name>sp_page</sys_class_name>
+        <sys_created_by>divya</sys_created_by>
+        <sys_created_on>2018-01-31 11:45:57</sys_created_on>
+        <sys_id>a88a01b8dbc41b00fbaa7d668c96198a</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>ess</sys_name>
+        <sys_package display_value="esm_sp_esm_main" source="x_infte_esm_sp_esm">3a8ff870dbc41b00fbaa7d668c9619ff</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="esm_sp_esm_main">3a8ff870dbc41b00fbaa7d668c9619ff</sys_scope>
+        <sys_update_name>sp_page_a88a01b8dbc41b00fbaa7d668c96198a</sys_update_name>
+        <sys_updated_by>divya</sys_updated_by>
+        <sys_updated_on>2018-01-31 12:05:01</sys_updated_on>
+        <title>ESM Main Page</title>
+    </sp_page>
+    <sys_translated_text action="delete_multiple" query="documentkey=a88a01b8dbc41b00fbaa7d668c96198a"/>
+</record_update>

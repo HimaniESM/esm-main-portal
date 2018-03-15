@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="m2m_announcement_portal">
+    <m2m_announcement_portal action="INSERT_OR_UPDATE">
+        <announcement display_value="hello_World">f894d64adb601f407b9b9ea3db961979</announcement>
+        <order>100</order>
+        <sp_portal display_value="ESM SP Main Portal">7a1a01b8dbc41b00fbaa7d668c961981</sp_portal>
+        <sys_class_name>m2m_announcement_portal</sys_class_name>
+        <sys_created_by>DIVYA</sys_created_by>
+        <sys_created_on>2018-03-01 10:55:36</sys_created_on>
+        <sys_id>39051e4adb601f407b9b9ea3db961951</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>hello_World.ESM SP Main Portal</sys_name>
+        <sys_package display_value="esm_sp_esm_main" source="x_infte_esm_sp_esm">3a8ff870dbc41b00fbaa7d668c9619ff</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="esm_sp_esm_main">3a8ff870dbc41b00fbaa7d668c9619ff</sys_scope>
+        <sys_update_name>m2m_announcement_portal_39051e4adb601f407b9b9ea3db961951</sys_update_name>
+        <sys_updated_by>DIVYA</sys_updated_by>
+        <sys_updated_on>2018-03-01 10:55:36</sys_updated_on>
+    </m2m_announcement_portal>
+</record_update>

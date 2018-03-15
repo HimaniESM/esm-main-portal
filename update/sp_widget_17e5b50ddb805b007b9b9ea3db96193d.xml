@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope) {
+  /* widget controller */
+  var c = this;
+	
+	$scope.persona=$scope.user.u_persona;
+	
+	$scope.func = function(divya){
+		$scope.appName="#"+divya;
+	}
+	
+	//alert("color" + c.data.personaColor);
+	//alert(document.getElementById('itemTile'));
+	//document.getElementById('itemTile').style.backgroundColor = c.data.personaColor;
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.tile:hover
+{
+    box-shadow: 0px 0px 10px #5c6369;
+   
+    z-index: 1;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.1);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.1);   
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.1);
+    transition: all 200ms ease-in;
+    transform: scale(1.04);
+    cursor : pointer;
+}
+
+.part1{
+   padding-left:10px;
+  padding-right:10px;
+  padding-bottom : 10px;
+  padding-top : 10px;
+  //height : auto;
+  height : 250px;
+  //position : fixed;
+ // margin-left:-10px;
+  //margin-right:-10px;
+  //text-align : center;
+
+  
+  
+  //background-color : transparent;
+}
+
+span{
+  //color : #48888c;
+  color : #e8e8e8;
+   font-size: 15pt; 
+  font-family: calibri;
+  //height : 80px;
+  //padding-left : 30px;
+}
+
+.one a{
+  color : #e8e8e8;
+   font-size: 15pt; 
+  font-family: calibri;
+}
+.desc{
+  font-size: 13pt; 
+  font-family: Myriad Pro;
+}
+
+
+.row{
+   margin-right: 50px;
+    margin-left: 50px;
+  padding-left : 40px;
+  padding-right : 40px;
+}
+
+img{
+  height : 70px;
+  width : 70px;
+}
+
+ul li ul {
+  display: none;
+}
+
+li{
+  color : #1f1c1c;
+   font-size: 15pt; 
+  font-family:calibri;
+}
+
+ul{
+  text-decoration : none;
+}
+
+a{
+ 		color : #e8e8e8;
+   font-size: 12pt; 
+  font-family: calibri;
+  
+}
+#category a{
+  color : #fff;
+  font-family : calibri;
+  font-weight : bold;
+  font-size : 15px;
+}
+.item{
+  //padding-left : 20%;
+}
+.catalog{
+  padding-left : 18%;
+}
+
+/*************** Persona **************/
+
+.tile{
+  
+    border-radius : 5px;
+   //background : #632d2d;
+  opacity : 0.9;
+ 		transition : 0.5s;
+  	transition-timing-function: ease-out;
+  
+}
+
+/*.tile#ts{
+  
+    border-radius : 5px;
+    background-color:  rgba(6, 47, 79,0.9);
+ 		transition : 0.5s;
+  	transition-timing-function: ease-out;
+  
+}
+
+.tile#bu{
+  
+    border-radius : 5px;
+    background-color: rgba(73, 39, 74,0.8);
+ 		transition : 0.5s;
+  	transition-timing-function: ease-out;
+  
+}
+
+.tile#ex{
+  
+    border-radius : 5px;
+     background-color: rgba(219, 81, 2,0.8);
+ 		transition : 0.5s;
+  	transition-timing-function: ease-out;
+  
+}
+
+.tile#am{
+  
+    border-radius : 5px;
+    background-color: rgba(3, 20, 36,0.9);
+ 		transition : 0.5s;
+  	transition-timing-function: ease-out;
+  
+}
+
+.tile#cl{
+  
+    border-radius : 5px;
+    background-color: rgba(63, 50, 80,0.8);
+ 		transition : 0.5s;
+  	transition-timing-function: ease-out;
+  
+}*/
+
+
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>trail</id>
+        <internal>false</internal>
+        <link/>
+        <name>ESM SP trail</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+	
+	data.user = gs.getUserID();
+	/*************** Persona *****************/
+	var user = new GlideRecord('sys_user');
+	user.addQuery('sys_id',data.user);
+	user.query();
+	
+	while(user.next()){
+		var personaCode = user.getDisplayValue('u_persona');
+		data.personaColor = '';
+				
+		if(personaCode){
+			var persona = new GlideRecord('x_infte_esm_sp_esm_esm_main_portal_persona_table');
+			persona.addQuery('u_persona_code',personaCode);
+			persona.query();
+			
+			while(persona.next()){
+				data.personaColor = persona.getDisplayValue('u_color');
+			}
+		}
+		else{
+			data.personaColor = '#632d2d';
+		}
+	}
+	
+	/************ End of Persona *************/
+	
+	data.category = [];
+	data.catalogItems =[];
+	data.parentCategory = [];
+	data.catalogItem = [];
+	
+	var documentKey = $sp.getParameter('sys_id');
+
+//if (JSUtil.nil(categorySysID))
+  //  categorySysID = 'No Category';
+	
+var category = new GlideRecord('sc_category');
+	category.addQuery('sys_id',documentKey);
+	category.addActiveQuery();
+	category.query();
+	
+	
+	while(category.next()){
+		obj = {};
+		obj.name = category.getDisplayValue('title');
+		data.parentCategory.push(obj);
+	}
+	
+
+ 
+var gr = new GlideRecord('sc_category');
+gr.addQuery('parent',documentKey);
+gr.addActiveQuery();
+gr.orderBy('order');
+gr.query();
+ 
+
+	
+	while(gr.next()){
+		object = {};
+		
+		object.title = gr.getDisplayValue('title');
+		object.id = gr.getValue('sys_id');
+		object.icon = gr.getDisplayValue('header_icon');
+		var item = new GlideRecord('sc_cat_item');
+		item.addQuery('category',object.id);	
+		item.addActiveQuery();
+		item.query();
+	
+		while(item.next()){
+				object1 = {};
+	
+				object1.name = item.getDisplayValue('name');
+				object1.id = item.getValue('sys_id');
+			
+				object1.head =item.getDisplayValue('category');
+				data.catalogItems.push(object1);
+			}
+		
+		data.category.push(object);
+	}
+
+	
+if(data.category.length==0){
+	var catalogItem = new GlideRecord('sc_cat_item');
+	catalogItem.addQuery('category',documentKey);
+	catalogItem.addActiveQuery();
+	catalogItem.query();
+	
+	while(catalogItem.next()){
+		object2 = {};
+		
+		object2.name = catalogItem.getDisplayValue('name');
+		object2.id = catalogItem.getValue('sys_id');
+		
+		if(catalogItem.getDisplayValue('sys_class_name')== 'Order guide'){
+			object2.page="sc_cat_item_guide";
+		}
+		else 
+			object2.page="catalog_item";
+		object2.icon = catalogItem.getDisplayValue('icon');
+		
+		data.catalogItem.push(object2);
+	}
+
+}
+	
+	
+	
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>Manjeet_Kumar</sys_created_by>
+        <sys_created_on>2018-02-01 09:34:08</sys_created_on>
+        <sys_id>17e5b50ddb805b007b9b9ea3db96193d</sys_id>
+        <sys_mod_count>17</sys_mod_count>
+        <sys_name>ESM SP trail</sys_name>
+        <sys_package display_value="esm_sp_esm_main" source="x_infte_esm_sp_esm">3a8ff870dbc41b00fbaa7d668c9619ff</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="esm_sp_esm_main">3a8ff870dbc41b00fbaa7d668c9619ff</sys_scope>
+        <sys_update_name>sp_widget_17e5b50ddb805b007b9b9ea3db96193d</sys_update_name>
+        <sys_updated_by>divya</sys_updated_by>
+        <sys_updated_on>2018-03-06 13:31:00</sys_updated_on>
+        <template><![CDATA[<br/> 
+<div ng-repeat="cat in data.parentCategory" class="row" id="category">  
+  <a href="?id=service_catalog">{{cat.name}}</a> 
+</div>
+<br/> 
+
+<div class="row">
+  <div class="col-md-3 part1" ng-repeat="val in data.catalogItem">
+    <a href="?id={{val.page}}&sys_id={{val.id}}"><div class="tile" style="background-color : {{data.personaColor}}" ng-attr-id={{persona}} data-toggle="collapse" ng-click="func(val.id)" data-target={{appName}}>
+      <br/>
+         		<center><img src="{{val.icon}}"/> </center>
+        		<br/>
+      		<div class="catalog">
+            <span class="one">{{val.name}}</span> 
+      </div>
+			<br/>
+      <br/>
+      </div>
+      </a>
+  </div>
+  </div>
+
+<div class="row" ng-if="data.category.length > 0">
+     <div class="col-md-3 part1" ng-repeat="val in data.category">
+     		<div class="tile" ng-attr-id={{persona}} style="background-color : {{data.personaColor}}" data-toggle="collapse" ng-click="func(val.id)" data-target={{appName}}>
+        	<br/>
+         		<center><img src="{{val.icon}}"/> </center>
+        		<br/>
+         			<div data-toggle="collapse" ng-click="func(val.id)" data-target={{appName}} class="catalog">
+           		<span class="glyphicon glyphicon-plus icon">&nbsp;{{val.title}}</span> 
+        			</div>
+          <br/>
+ 						<div id={{val.id}} class="collapse item">
+             
+               <div ng-repeat="thi in data.catalogItems">
+                <div ng-if="val.title==thi.head">
+     						
+                  <!--<span class="glyphicon glyphicon-minus icon">-->&nbsp;<a href="?id=catalog_item&sys_id={{thi.id}}">{{thi.name}}</a><!--</span>-->
+                 </div>	
+                
+              </div>
+             
+                
+              
+          </div>
+          <br/>
+         
+          </div>
+     </div>
+  
+]]></template>
+    </sp_widget>
+</record_update>

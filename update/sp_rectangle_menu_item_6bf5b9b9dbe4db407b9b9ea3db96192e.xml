@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_rectangle_menu_item">
+    <sp_rectangle_menu_item action="INSERT_OR_UPDATE">
+        <active>false</active>
+        <color>default</color>
+        <condition>gs.isLoggedIn()</condition>
+        <display_1/>
+        <display_2/>
+        <display_date/>
+        <filter/>
+        <glyph/>
+        <hint/>
+        <kb_article/>
+        <kb_category/>
+        <kb_topic/>
+        <label>Requests</label>
+        <order>300</order>
+        <record_script><![CDATA[// maximum number of entries in this Menu
+var max = 30;
+
+var t = data;  // shortcut
+t.items = [];
+
+var u = gs.getUser().getID();
+
+// use record watchers to tell header when to update dropdown counts
+t.record_watchers = [];
+t.record_watchers.push({'table':'service_task','filter':'active=true^opened_by=' + u});
+t.record_watchers.push({'table':'incident','filter':'active=true^caller_id=' + u});
+t.record_watchers.push({'table':'sc_request','filter':'active=true^requested_for=' + u});
+
+var st = new GlideRecord('service_task');
+if (st.isValid()) {
+  st.addActiveQuery();
+  st.addQuery('opened_by', gs.getUserID());
+  st.orderByDesc('sys_updated_on');
+  st.setLimit(max);
+  st.query();
+  while (st.next()) {
+    var a = {};
+    a.short_description = st.getDisplayValue('short_description');
+    a.sys_id = st.getValue('sys_id');
+    a.number = st.getDisplayValue('number');
+    a.sys_updated_on = st.getDisplayValue('sys_updated_on');
+    //$sp.getRecordValues(a, st, 'short_description,sys_id,number,sys_updated_on');
+    if (st.short_description.nil())
+      a.short_description = "(No description)";
+    a.__table = st.getTableName();
+    a.type = 'record';
+    a.sortOrder = (new GlideDateTime(st.getValue('sys_updated_on'))).getNumericValue();
+    t.items.push(a);
+  }
+}
+
+var z = new GlideRecord('incident');
+z.addActiveQuery();
+z.addQuery('caller_id', gs.getUserID());
+z.orderByDesc('sys_updated_on');
+z.setLimit(max);
+z.query();
+while (z.next()) {
+  var a = {};
+  a.short_description = z.getDisplayValue('short_description');
+  a.sys_id = z.getValue('sys_id');
+  a.number = z.getDisplayValue('number');
+  a.sys_updated_on = z.getDisplayValue('sys_updated_on');
+  //$sp.getRecordValues(a, z, 'short_description,sys_id,number,sys_updated_on');
+  if (z.short_description.nil())
+    a.short_description = "(No description)";
+  a.__table = z.getTableName();
+  a.type = 'record';
+  a.sortOrder = (new GlideDateTime(z.getValue('sys_updated_on'))).getNumericValue();
+  t.items.push(a);
+}
+
+var z = new GlideRecord('sc_request');
+z.addActiveQuery();
+z.addQuery('requested_for', gs.getUserID());
+z.orderByDesc('sys_updated_on');
+z.setLimit(max);
+z.query();
+while (z.next()) {
+  var ritm = new GlideRecord('sc_req_item');
+  ritm.addQuery('request', z.getUniqueValue());
+  ritm.query();
+  if (!ritm.next())
+    continue;
+
+  var a = {};
+  a.short_description = z.getDisplayValue('short_description');
+  a.sys_id = z.getValue('sys_id');
+  a.number = z.getDisplayValue('number');
+  a.sys_updated_on = z.getDisplayValue('sys_updated_on');
+  //$sp.getRecordValues(a, z, 'sys_id,number,sys_updated_on');
+  if (ritm.hasNext())
+    a.short_description = ritm.getRowCount() + ' requested items';
+  else
+    a.short_description = ritm.cat_item.getDisplayValue() || ritm.getDisplayValue("short_description");
+  a.__table = z.getTableName();
+  a.type = 'request';
+  a.sortOrder = (new GlideDateTime(z.getValue('sys_updated_on'))).getNumericValue();
+  t.items.push(a);
+}
+
+t.items.sort(function(a, b) {
+  return b.sortOrder - a.sortOrder;
+});
+t.items = t.items.slice(0, max); // only want first 30
+t.count = t.items.length;
+
+var link = {title: gs.getMessage('View all requests'), type: 'link', href: '?id=requests', items: []};
+t.items.unshift(link); // put 'View all requests' first]]></record_script>
+        <sc_cat_item/>
+        <sc_category/>
+        <short_description/>
+        <sp_page/>
+        <sp_rectangle_menu display_value="ESM Main Header Menu">c80c413ddb64db407b9b9ea3db961942</sp_rectangle_menu>
+        <sp_rectangle_menu_item/>
+        <sys_class_name>sp_rectangle_menu_item</sys_class_name>
+        <sys_created_by>divya</sys_created_by>
+        <sys_created_on>2018-02-28 14:02:33</sys_created_on>
+        <sys_id>6bf5b9b9dbe4db407b9b9ea3db96192e</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>Requests</sys_name>
+        <sys_package display_value="esm_sp_esm_main" source="x_infte_esm_sp_esm">3a8ff870dbc41b00fbaa7d668c9619ff</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="esm_sp_esm_main">3a8ff870dbc41b00fbaa7d668c9619ff</sys_scope>
+        <sys_update_name>sp_rectangle_menu_item_6bf5b9b9dbe4db407b9b9ea3db96192e</sys_update_name>
+        <sys_updated_by>divya</sys_updated_by>
+        <sys_updated_on>2018-03-05 10:33:11</sys_updated_on>
+        <table/>
+        <type>scripted</type>
+        <url/>
+        <url_target/>
+    </sp_rectangle_menu_item>
+    <sys_translated_text action="delete_multiple" query="documentkey=6bf5b9b9dbe4db407b9b9ea3db96192e"/>
+</record_update>

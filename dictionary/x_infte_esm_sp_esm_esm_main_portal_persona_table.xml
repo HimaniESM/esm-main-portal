@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="ESM Main Portal Persona Table" max_length="40" name="x_infte_esm_sp_esm_esm_main_portal_persona_table" type="collection">
+        <element label="Persona Color" max_length="40" name="u_color" type="string"/>
+        <element label="Persona Description" max_length="500" name="u_description" type="string"/>
+        <element label="Persona Logo" max_length="200" name="u_logo" type="string"/>
+        <element display="true" label="Persona Name" max_length="50" name="u_name" type="string"/>
+        <element label="Persona Code" max_length="40" name="u_persona_code" type="string"/>
+    </element>
+</database>

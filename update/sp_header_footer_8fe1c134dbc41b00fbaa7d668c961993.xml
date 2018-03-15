@@ -1,0 +1,791 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_header_footer">
+    <sp_header_footer action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope, spUtil, $rootScope, $timeout, spAriaUtil) {
+  /* widget controller */
+  var c = this;
+	$scope.persona=$scope.user.u_persona;
+	/************* Background Image *************/
+	document.body.style.backgroundImage = "url(" + $scope.data.bgUrl + ")";
+		
+	/**************Background image end******/
+	/*$scope.background= $scope.user.u_background_main;
+	
+	
+	if($scope.background=='box1'){
+document.body.style.backgroundImage = "url(scroll1.jpg)";
+	}
+		if($scope.background=='box2'){
+document.body.style.backgroundImage = "url(scroll3.jpg)";
+	}
+		if($scope.background=='box3'){
+document.body.style.backgroundImage = "url(scroll4.jpg)";
+	}
+		if($scope.background=='box4'){
+document.body.style.backgroundImage = "url(store5.jpg)";
+	}
+		if($scope.background=='box5'){
+document.body.style.backgroundImage = "url(store6.jpg)";
+	}
+		if($scope.background=='box6'){
+document.body.style.backgroundImage = "url(store7.jpg)";
+	}
+		if($scope.background=='box7'){
+document.body.style.backgroundImage = "url(store8.jpg)";
+	}
+		if($scope.background=='box8'){
+document.body.style.backgroundImage = "url(store9.jpg)";
+	}
+		if($scope.background=='box9'){
+document.body.style.backgroundImage = "url(store10.jpg)";
+	}
+		if($scope.background=='box10'){
+document.body.style.backgroundImage = "url(store11.jpg)";
+	}
+		if($scope.background=='box11'){
+document.body.style.backgroundImage = "url(store12.jpg)";
+	}
+		if($scope.background=='box12'){
+document.body.style.backgroundImage = "url(store13.jpg)";
+	}*/
+	
+	//Cart functions
+	
+	$scope.loadingIndicator = $rootScope.loadingIndicator;
+	$scope.cartItemCount = 0;
+	$scope.wishlistItemCount = 0;
+	$scope.itemAddedTooltipOpen = false;
+
+	$scope.accessibilityEnabled = spAriaUtil.g_accessibility === "true";
+
+	$scope.$on("$sp.service_catalog.cart.count", function($evt, count) {
+		$scope.cartItemCount = count;
+	});
+
+	$scope.$on("$sp.service_catalog.wishlist.count", function($evt, count) {
+		$scope.wishlistItemCount = count;
+	});
+
+	var cancelTooltipPromise;
+	$scope.$on("$sp.service_catalog.cart.add_item", function() {
+		$timeout.cancel(cancelTooltipPromise);
+
+		$scope.itemAddedTooltipOpen = true;
+		cancelTooltipPromise = $timeout(function() {
+			$scope.itemAddedTooltipOpen = false;
+		}, 3000);
+	});
+
+	$scope.$on('sp_loading_indicator', function(e, value) {
+		$scope.loadingIndicator = value;
+	});
+
+	$scope.toggleCart = function() {
+		$timeout.cancel(cancelTooltipPromise);
+		$scope.itemAddedTooltipOpen = false;
+		$timeout(function() {
+			$("#cart-dropdown").dropdown("toggle");
+		});
+	};
+/*
+	// PRB1108244: visibleItems array is used to improve keyboard nav 
+	// in menu, refresh it as needed
+	$scope.$watch('data.menu.items', function() {
+		$scope.visibleItems = [];
+		if ($scope.data.menu.items) {
+			for (var i in $scope.data.menu.items) {
+				var item = $scope.data.menu.items[i];
+				if (item.items || (item.scriptedItems && item.scriptedItems.count != 0))
+					$scope.visibleItems.push(item);
+			}
+		}
+	}, true);
+
+	// Get list of record watchers
+	var record_watchers = [];
+	if ($scope.data.menu.items) {
+		for(var i in $scope.data.menu.items) {
+			var item = $scope.data.menu.items[i];
+			if (item.type == 'scripted') {
+				if (item.scriptedItems.record_watchers)
+					record_watchers = record_watchers.concat(item.scriptedItems.record_watchers);
+			}
+			if (item.type == 'filtered') {
+				record_watchers.push({'table':item.table,'filter':item.filter});
+			}
+		}
+	}
+
+	// Init record watchers
+	for (var y in record_watchers){
+		var watcher = record_watchers[y];
+		spUtil.recordWatch($scope, watcher.table, watcher.filter);
+	}
+	*/
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>
+
+.cart-dropdown, .wishlist-menu {
+  width: 350px;
+  padding: 0;
+  z-index: 1000;
+  border-top-left-radius: 4px !important;
+  border-top-right-radius: 4px !important;
+
+  ul {
+    max-height: 300px;
+    overflow: auto;
+  }
+
+  .subtotal {
+    display: block;
+  }
+
+  .item-image {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    max-width:100%;
+    height:auto;
+  }
+  label, p {
+    padding: 0;
+    margin: 0;
+  }
+  .media {
+    padding: 0;
+    margin: 0;
+  }
+  .media-left &gt; a {
+    display: block;
+    width: 48px;
+    max-width: 48px;
+  }
+  .media-body {
+    label {
+      font-weight: bold;
+    }
+  }
+  li.media {
+    border-top: 1px solid #cccccc;
+    padding: 1rem;
+  }
+  .panel {
+    margin: 0;
+  }
+  .panel .panel-body {
+    padding: 0;
+  }
+  .btn-clear {
+		color: #333;
+    background-color: #fff;
+  }
+  p.quantity-price {
+    padding-top: 0.5rem;
+    span {
+      color: $text-muted;
+      padding-right: 0.5rem;
+    }
+  }
+  .align-right {
+  	text-align: right;
+  }
+}
+
+
+
+@media (min-width: 1200px)
+.container {
+    width: 1170px;
+}
+.container {
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.row {
+    margin-right: -100px !important;
+    margin-left: -90px !important;
+}
+ @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {  
+  .sc-text{
+   margin-top:-20px 
+  }
+}
+HTML[data-doctype=true] BODY {
+    color: #343d47;
+    margin: 0;
+}
+
+body {
+    font-family: calibri;
+    //font-size: 14px;
+    line-height: 1.42857143;
+    //color: #333;
+    //background-color: #fff;
+}
+
+@media only screen and (max-width: 500px){ 
+  #linktestID{
+  margin-top : -25px;
+		background: transparent; /* fallback for old browsers */
+		
+	}
+}
+
+
+@media only screen and (min-width: 501px){
+  #linktestID{
+  margin-top : -45px;
+		background: transparent; /* fallback for old browsers */
+		
+	}
+
+}
+		
+.page-heading, .page-heading-contact {
+   // padding-left : 5.6%;
+  //padding-right : 7%;
+  width : 100%;
+}
+
+
+.inline-link-list {
+    font-size: 0;
+    list-style: none;
+    margin: 0 auto;
+  	padding-left : 7% !important;
+    padding-right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+ menu, dir {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+}
+
+.footer-nav-links li:first-child {
+    padding-left: 0;
+}
+
+.footer-nav-links li {
+    padding: 0 0 0 0.5%;
+  
+}
+
+.inline-link-list li {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 1;
+}
+
+.text-center {
+    text-align: center;
+  padding-left:0px;
+}
+
+.footer-nav-links li a{
+  
+  color:#fff;
+  
+  font-family: calibri;
+  font-size: 20px;
+  font-weight : bold;
+}
+
+.heading{
+  margin-top:5px;
+  margin-bottom:5px;
+  font-family: calibri;
+}
+
+.sideHeading{
+  font-family: calibri;
+  color:#4e4648;
+  //color:#fff;
+  font-size: 17px;
+}
+
+li{
+  font-family: calibri;
+}
+
+.profile{
+  text-align:right;
+  padding-right : 4%;
+}
+
+#top-heading{
+//  background : (78,197,193,0.8);//;#572a58;
+  //background: -webkit-linear-gradient(to left, white , black); /* Chrome 10-25, Safari 5.1-6 */
+	//background: linear-gradient(to left, #5F0034 , #A52D7A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+ 
+ 
+ .dropdown-menu li a{
+  color:#730000;
+  line-height:20px;padding-top:10px
+}
+
+.nav li a:focus{
+ background-color:transparent;
+ }
+ 
+.nav1{
+  
+	height:30px;
+  color:white;
+  font-size:12px;
+ background:rgba(0,0,0,0.6);//#38224b;//38224b;//d8b2d8;//f2e5f2;//38224b;//rgba(0,0,0,0.2);
+  width:100%;
+
+}
+ .navbar &gt; li &gt; a {padding-top:5px !important; padding-bottom:0px !important;}
+.navbar {min-height:40px !important; }
+}
+.nav1 ul li a{
+  margin-top:-10px;
+ color:white;//#730073;//38224b; 
+  margin-right:15px;
+  font-size: 14px;
+    font-weight: 600;
+ }
+
+.divider {
+    position: absolute;
+    right:-1px;
+    top:20px;
+}
+.badge{
+ position:absolute;
+  top:20px;
+  right:8px;
+  background-color:#cc0000;
+}
+.esm-main{
+  
+// position:relartive; 
+}
+.navbar-brand{
+  
+  margin-left:-55px;
+  margin-top:-15px;
+}
+.dropdown-menu{
+ background-color:#cac5c5;
+  opacity : 0.8;//black;
+   //rgba(0,0,0,0.5);  
+}
+
+
+
+.nav1 ul li a:hover{
+ color:white; 
+  background-color:transparent;
+ // border-bottom:2px solid white;
+   cursor:hand;
+}
+
+
+ 
+/***** navbar *****/
+ 
+   
+.nav1 ul{
+//margin-right:10%;
+}
+.nav2{
+//  width:80%; margin-left:10%;
+ // margin-left:85px;
+  margin-top:40px;
+   height:50px;
+  font-size:16px;
+  color:white;
+  
+  
+}
+
+.nav2 ul{
+ margin-left:5px; 
+  
+}
+.nav2 ul li a{
+  margin-top:10px;
+  margin-left:30px;
+  color:white;
+  }
+.nav2 ul li a:hover{
+ color:white; 
+ background-color:transparent;
+  cursor:hand;
+  border-bottom:2px solid white;
+
+}
+ 
+/**end of navbar**/
+
+.footer-nav{
+  //position : absolute;
+  //padding-top : 20px;
+  margin-top:3%;
+}
+  
+
+
+h3{
+  
+ color:white 
+}
+
+h4{
+ color:white;
+  margin-left:47%;
+  margin-top:-20px;
+  font-style:calibri;
+  
+}
+
+.logo{
+  
+  padding-left : 14.5% !important;
+}
+
+.list{
+  padding-right : 10%;
+}
+*/
+
+
+.cart-dropdown, .wishlist-menu {
+  width: 350px;
+  padding: 0;
+  z-index: 1000;
+  border-top-left-radius: 4px !important;
+  border-top-right-radius: 4px !important;
+
+  ul {
+    max-height: 300px;
+    overflow: auto;
+  }
+
+  .subtotal {
+    display: block;
+  }
+
+  .item-image {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    max-width:100%;
+    height:auto;
+  }
+  label, p {
+    padding: 0;
+    margin: 0;
+  }
+  .media {
+    padding: 0;
+    margin: 0;
+  }
+  .media-left &gt; a {
+    display: block;
+    width: 48px;
+    max-width: 48px;
+  }
+  .media-body {
+    label {
+      font-weight: bold;
+    }
+  }
+  li.media {
+    border-top: 1px solid #cccccc;
+    padding: 1rem;
+  }
+  .panel {
+    margin: 0;
+  }
+  .panel .panel-body {
+    padding: 0;
+  }
+  .btn-clear {
+		color: #333;
+    background-color: #fff;
+  }
+  p.quantity-price {
+    padding-top: 0.5rem;
+    span {
+      color: $text-muted;
+      padding-right: 0.5rem;
+    }
+  }
+  .align-right {
+  	text-align: right;
+  }
+}
+
+/*************************************Top News Scroller *********************************/
+.page-heading #scrollNews{
+  background-color : #ffffff;
+  opacity : 0.6;
+  margin-right:-15px;
+ 
+}
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>esm_sp_ess_header</id>
+        <internal>false</internal>
+        <link><![CDATA[function(scope, elem) {
+	$(elem).on('keydown','.header-menu-item',function(e){
+		var target = e.target;
+		if (target.localName == 'a') {
+			if(e.keyCode == 37) {
+				e.preventDefault();
+				$(target).parents('li').removeClass('open');
+				$(target).parents('li').prev('li').find('a').focus();
+			} else if(e.keyCode == 39) {
+				e.preventDefault();
+				$(target).parents('li').removeClass('open');
+				$(target).parents('li').next('li').find('a').focus();
+				
+			}
+			if(e.keyCode == 9) {
+				$(target).parents('li').removeClass('open');
+			}
+		}
+		});
+	}]]></link>
+        <name>ESM SP ESS Header</name>
+        <option_schema>[{"hint":"My Orders","name":"label1","section":"Presentation","default_value":"My Orders","label":"\"My Orders\" Replacement Text","type":"string"},{"hint":"My Issues","name":"label2","section":"Presentation","default_value":"My Issues","label":"\"My Issues\" Replacement Text","type":"string"},{"hint":"My Approval","name":"label3","section":"Presentation","default_value":"My Approval","label":"\"My Approval\" Replacement Text","type":"string"},{"hint":"My Assets","name":"label4","section":"Presentation","default_value":"My Assets","label":"\"My Assets\" Replacement Text","type":"string"}]</option_schema>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+	data.pageid=$sp.getParameter('id');
+	data.userId = gs.getUserID();
+	var user = gs.getUserID();
+	
+	data.alert = [];
+	
+	var grKb = new GlideRecord('kb_knowledge');
+	
+	grKb.addQuery('valid_to>=javascript:gs.daysAgoStart(0)^workflow_state=published^active=true^kb_category=196995ebdb5897407b9b9ea3db96191c');
+	grKb.orderByDesc('published');
+	grKb.query();
+	
+	
+	while(grKb.next()){
+		alertObject = {};
+		
+		alertObject.shortDesc = grKb.getDisplayValue("short_description");
+		alertObject.id = grKb.getDisplayValue("sys_id");
+		
+		data.alert.push(alertObject);		
+	}
+	/******** To set Bg Image *******/
+
+var userRec = new GlideRecord('sys_user');
+userRec.addQuery('sys_id',user);
+userRec.query();
+
+while(userRec.next()){
+	data.bgNumber = userRec.getDisplayValue('u_background_main');
+	var bg = new GlideRecord('u_main_portal_bg');
+	bg.addQuery('u_number',data.bgNumber);
+	bg.query();
+	
+	while(bg.next()){
+		data.bgUrl = bg.getDisplayValue('u_image');
+	}
+}
+/************** END of BG Image  *************/	
+	/*
+	var menu_id = $sp.getValue('sys_id'); // instance sys_id
+	var gr = new GlideRecord('sp_instance_menu');
+	gr.get(menu_id);
+	data.menu = {};
+	data.menu.name = gr.name.getDisplayValue();
+	data.menu.items = $sp.getMenuItems(menu_id);
+
+	data.isLoggedIn = GlideSession.get().isLoggedIn();
+	data.showWishlist = new sn_sc.Catalog('' + $sp.getValue('sc_catalog')).isWishlistEnabled();
+	if (data.isLoggedIn) {
+		if (data.showWishlist)
+			data.wishlistWidget = $sp.getWidget("sc_wishlist_cart", {wishlistTemplate: "small_wishlist.html", auto_update_wishlist:options.auto_update_wishlist});
+		if (gs.getProperty("glide.sc.portal.use_cart_v2_header", "false") === "true")
+			data.cartWidget = $sp.getWidget("sc-shopping-cart-v2", {cartTemplate: "small_shopping_cart_v2.html", auto_update_cart:options.auto_update_cart});
+		else
+			data.cartWidget = $sp.getWidget("sc-shopping-cart", {cartTemplate: "small_shopping_cart.html", auto_update_cart:options.auto_update_cart});
+	}
+*/
+]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_header_footer</sys_class_name>
+        <sys_created_by>Manjeet_Kumar</sys_created_by>
+        <sys_created_on>2018-01-31 11:11:13</sys_created_on>
+        <sys_id>8fe1c134dbc41b00fbaa7d668c961993</sys_id>
+        <sys_mod_count>24</sys_mod_count>
+        <sys_name>ESM SP ESS Header</sys_name>
+        <sys_package display_value="esm_sp_esm_main" source="x_infte_esm_sp_esm">3a8ff870dbc41b00fbaa7d668c9619ff</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="esm_sp_esm_main">3a8ff870dbc41b00fbaa7d668c9619ff</sys_scope>
+        <sys_update_name>sp_header_footer_8fe1c134dbc41b00fbaa7d668c961993</sys_update_name>
+        <sys_updated_by>divya</sys_updated_by>
+        <sys_updated_on>2018-03-02 04:46:56</sys_updated_on>
+        <template><![CDATA[<div ng-hide="data.pageid == 'main' ">
+<div class="page-heading" id="top-heading" style="width:100%;">
+   <div class="container">
+      <div class="row">
+         <!--<div class="col-sm-4 col-md-4" style="float:left;">
+            <a href="home.do"> <img width="300" src="newlogo3.png" height="40"></a>
+             
+            </div>
+            
+            <div col-md-8 col-sm-8>-->
+         <div class="row"  style="height:40;padding:0px">
+            <div class="navbar nav1"  role="navigation">
+               <div class="navbar-header">
+                  <div class="navbar-header"></div>
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  </button>
+               </div>
+               <div class="collapse navbar-collapse">
+                  <ul class="nav navbar-nav logo">
+                     <a href="?id=ess">
+                        <li>  <img width="300" src="newlogo3.png" height="40"></li>
+                     </a>
+                  </ul>
+                  <ul class="nav navbar-nav pull-right list">
+                     <li><a href="?id=ess">Home<span class="divider">|</span></a></li>
+                     <li><a href="?id=services_status">System Stats<span class="divider">|</span></a></li>
+                     <li><a href="?id=main">Change My Persona<span class="divider">|</span></a></li>
+                   	 <li><a href="?id=sc_cart_v2">Cart<span class="divider">|</span></a></li>
+                      <!-- Shopping cart Popup Link 
+ <li  ng-show="::!accessibilityEnabled" class="dropdown hidden-xs header-menu-item">
+  	<a href
+       data-toggle="dropdown"
+       id="cart-dropdown"
+       uib-tooltip-template="'item-added-tooltip.html'"
+       tooltip-placement="bottom"
+       tooltip-trigger="'none'"
+       tooltip-is-open="$parent.itemAddedTooltipOpen"
+       title="${Your shopping cart currently has} {{cartItemCount}} ${items}"
+       aria-label="${Shopping cart}">
+    	<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+      <span ng-bind-html="'${Cart}'" aria-hidden="true"></span>
+      <span ng-if="cartItemCount > 0" aria-hidden="true" class="label label-as-badge label-primary sp-navbar-badge-count">{{cartItemCount}}</span>
+		</a>
+    <div class="dropdown-menu cart-dropdown">
+      <sp-widget widget="data.cartWidget"></sp-widget>
+    </div>
+  </li>
+  <li class="dropdown" ng-class="::{'visible-xs': !accessibilityEnabled}"  aria-label="${Your shopping cart currently has} {{cartItemCount}} ${items}">
+  	<a href="?id=sc_cart"
+       title="${Cart}"
+       class="toggle-dropdown">
+    	<i class="fa fa-shopping-cart" aria-hidden="true"></i>
+      <span ng-bind-html="'${Cart}'" aria-hidden="true"></span>
+      <span ng-if="cartItemCount > 0" aria-hidden="true" class="label label-as-badge label-primary sp-navbar-badge-count">{{cartItemCount}}</span>
+	</a>
+  </li>
+                    
+          -->          
+                     <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Profile <b class="caret"></b><span class="divider">|</span></a>
+                        <ul class="dropdown-menu">
+                           <li><a href="?id=test&table=sys_user&sys_id=javascript:gs.getUserID()&view=ess" style=" color:#730000;">View Profile</a></li>
+                           <li><a href="./logout.do" style=" color:#730000;">Logout</a></li>
+                           <!--<li><a href="#" style=" color:#730000;">Change My Persona</a></li>                          
+                              <li><a href="#" style=" color:#730000;">Ideas Submitted</a></li>
+                              <li><a href="#" style=" color:#730000;">Ideas Approved</a></li>
+                              <li><a href="#"style=" color:#730000;">Ideas In Progress</a></li>-->
+                        </ul>
+                     </li>
+                     <li class="dropdown">
+                        <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">Language <b class="caret"></b><span class="divider">|</span></a>-->
+                        <ul class="dropdown-menu" style="z-index:89 ">
+                           <li><a href="?id={{data.pageid}}" style=" color:#730000;" >English</a></li>
+                           <!--<li><a href="#" style=" color:#730000;">Spanish</a></li>
+                              <li><a href="#" style=" color:#730000;">French</a></li>-->
+                        </ul>
+                     <li><a href="?id=announcement">Notifications<span class="divider"></span></a></li>
+                     <!--<li><a href="#">Announcements<span class="divider">|</span></a></li>
+                        <li><a href="#">Chat<span class="divider">|</span></a></li>
+                        <li><a href="#">Contact Us</a></li>-->
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<div class="">
+   <div class="page-heading" style="background-color : #e98300; opacity : 1; margin-right:-15px; margin-top: -20px;  height : 28px;" id="scrollNews">
+      <div class="container">
+         <marquee onmouseover="this.stop();" scrolldelay="110" onmouseout="this.start();" behaviour="scroll" direction="left">
+            <ul>
+               <span ng-repeat="value in data.alert" >
+               <a href="?id=kb_articles&sys_id={{value.id}}">
+               <strong class='sc-text'style="color:white; ">{{value.shortDesc}}</strong> &nbsp; &nbsp; &nbsp;
+               </a>
+               </span>
+            </ul>
+         </marquee>
+      </div>
+   </div>
+</div>
+<div class="page-heading" style="color:white" id="linktestID" style="width:100%">
+   <div class=" ">
+      <div style="margin-right:0px">
+         <div class="footer-nav" style="font-size:20px;font-weight:bolder;">
+            <ul class="inline-link-list footer-nav-links" style="display:inline; text-shadow: 1px 1px 1px #383838">
+               <li>
+                  <h5> <a id="menu_8b1d82de37b22200be4bcea954990ec4" href="?id=My_Request&table=sc_request&filter=opened_byDYNAMIC90d1921e5f510100a9ad2572f2b477fe%5EORrequested_forDYNAMIC90d1921e5f510100a9ad2572f2b477fe" target="" class="atag">{{::options.label1}}&nbsp;&nbsp;</a></h5>
+               </li>
+               <li>
+                  <h5> <a target="" id="menu_0b1d82de37b22200be4bcea954990ec3" href="?id=my_issues&table=incident&filter=caller_id%3Djavascript:gs.getUserID()%5Eactive%3Dtrue" class="atag">{{::options.label2}}&nbsp;&nbsp;</a></h5>
+               </li>
+               <li>
+                  <h5> <a target="" id="menu_431d82de37b22200be4bcea954990ec4" href="?id=my_approval&table=sysapproval_approver&filter=approver%3Djavascript:getMyApprovals()" class="atag">{{::options.label3}}&nbsp;&nbsp;</a></h5>
+               </li>
+               <li>
+                  <h5> <a target="" id="menu_cf1d82de37b22200be4bcea954990ec2" href="?id=my_asset" class="atag">{{::options.label4}}&nbsp;&nbsp;</a></h5>
+               </li>
+               <li ng-show="persona=='ex'">
+                  <h5> <a target=""   href="?id=my_dashboard"  >My Dashboards&nbsp;&nbsp;</a></h5>
+               </li>
+            </ul>
+         </div>
+      </div>
+   </div>
+</div>]]></template>
+    </sp_header_footer>
+</record_update>

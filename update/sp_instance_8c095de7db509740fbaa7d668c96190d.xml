@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_instance">
+    <sp_instance action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <glyph/>
+        <id/>
+        <order>1</order>
+        <roles/>
+        <short_description/>
+        <size>md</size>
+        <sp_column display_value="1">84095de7db509740fbaa7d668c96190a</sp_column>
+        <sp_widget display_value="KB Article Helpful">69a638365b722200a9ad09ed5a62bceb</sp_widget>
+        <sys_class_name>sp_instance</sys_class_name>
+        <sys_created_by>arjun</sys_created_by>
+        <sys_created_on>2018-02-21 12:08:16</sys_created_on>
+        <sys_id>8c095de7db509740fbaa7d668c96190d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Helpful?</sys_name>
+        <sys_package display_value="esm_sp_esm_main" source="x_infte_esm_sp_esm">3a8ff870dbc41b00fbaa7d668c9619ff</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="esm_sp_esm_main">3a8ff870dbc41b00fbaa7d668c9619ff</sys_scope>
+        <sys_update_name>sp_instance_8c095de7db509740fbaa7d668c96190d</sys_update_name>
+        <sys_updated_by>arjun</sys_updated_by>
+        <sys_updated_on>2018-02-21 12:08:16</sys_updated_on>
+        <title>Helpful?</title>
+        <url/>
+        <widget_parameters><![CDATA[{
+	"response": {
+		"value": "",
+		"displayValue": ""
+	},
+	"hide_percent_helpful": {
+		"value": "false",
+		"displayValue": "false"
+	}
+}]]></widget_parameters>
+    </sp_instance>
+    <sys_translated_text action="delete_multiple" query="documentkey=8c095de7db509740fbaa7d668c96190d"/>
+</record_update>

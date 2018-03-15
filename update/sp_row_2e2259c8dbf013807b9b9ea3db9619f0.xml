@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_row">
+    <sp_row action="INSERT_OR_UPDATE">
+        <class_name/>
+        <order>1</order>
+        <sp_column/>
+        <sp_container display_value="esm sp service catalog - Container 2">15e3b1c9db805b007b9b9ea3db961919</sp_container>
+        <sys_class_name>sp_row</sys_class_name>
+        <sys_created_by>divya</sys_created_by>
+        <sys_created_on>2018-03-07 11:11:03</sys_created_on>
+        <sys_id>2e2259c8dbf013807b9b9ea3db9619f0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>1</sys_name>
+        <sys_package display_value="esm_sp_esm_main" source="x_infte_esm_sp_esm">3a8ff870dbc41b00fbaa7d668c9619ff</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="esm_sp_esm_main">3a8ff870dbc41b00fbaa7d668c9619ff</sys_scope>
+        <sys_update_name>sp_row_2e2259c8dbf013807b9b9ea3db9619f0</sys_update_name>
+        <sys_updated_by>divya</sys_updated_by>
+        <sys_updated_on>2018-03-07 11:11:03</sys_updated_on>
+    </sp_row>
+</record_update>

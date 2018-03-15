@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_instance">
+    <sp_instance action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <glyph/>
+        <id/>
+        <order>1</order>
+        <roles/>
+        <short_description/>
+        <size>md</size>
+        <sp_column display_value="3">b5e0bb87db545740fbaa7d668c96196f</sp_column>
+        <sp_widget display_value="ESM Request Services Widget">0331bf87db545740fbaa7d668c961961</sp_widget>
+        <sys_class_name>sp_instance</sys_class_name>
+        <sys_created_by>vaidehi</sys_created_by>
+        <sys_created_on>2018-02-20 10:13:23</sys_created_on>
+        <sys_id>5b15bb0bdb545740fbaa7d668c961978</sys_id>
+        <sys_mod_count>11</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="esm_sp_esm_main" source="x_infte_esm_sp_esm">3a8ff870dbc41b00fbaa7d668c9619ff</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="esm_sp_esm_main">3a8ff870dbc41b00fbaa7d668c9619ff</sys_scope>
+        <sys_update_name>sp_instance_5b15bb0bdb545740fbaa7d668c961978</sys_update_name>
+        <sys_updated_by>kevin_domadia</sys_updated_by>
+        <sys_updated_on>2018-02-21 12:45:01</sys_updated_on>
+        <title/>
+        <url/>
+        <widget_parameters><![CDATA[{
+	"title3": {
+		"value": "",
+		"displayValue": ""
+	},
+	"icon3": {
+		"value": "",
+		"displayValue": ""
+	},
+	"categories": {
+		"value": "211af0d1db9853407b9b9ea3db96191c,c73ab4d1db9853407b9b9ea3db961922,d0597491db9853407b9b9ea3db961951,76f81af2db5057407b9b9ea3db9619ee",
+		"displayValue": "Hardware Services, Software Services, Access Management, Peripherals"
+	}
+}]]></widget_parameters>
+    </sp_instance>
+    <sys_translated_text action="delete_multiple" query="documentkey=5b15bb0bdb545740fbaa7d668c961978"/>
+</record_update>

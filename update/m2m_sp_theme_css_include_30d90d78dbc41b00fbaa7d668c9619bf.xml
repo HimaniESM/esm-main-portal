@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="m2m_sp_theme_css_include">
+    <m2m_sp_theme_css_include action="INSERT_OR_UPDATE">
+        <order>200</order>
+        <sp_css_include display_value="esm-sp-customer-service-styles.css">b6d94d78dbc41b00fbaa7d668c961945</sp_css_include>
+        <sp_theme display_value="esm_sp_esm_main">4d784178dbc41b00fbaa7d668c961977</sp_theme>
+        <sys_class_name>m2m_sp_theme_css_include</sys_class_name>
+        <sys_created_by>divya</sys_created_by>
+        <sys_created_on>2018-01-31 11:43:34</sys_created_on>
+        <sys_id>30d90d78dbc41b00fbaa7d668c9619bf</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>esm-sp-customer-service-styles.css.esm_sp_esm_main</sys_name>
+        <sys_package display_value="esm_sp_esm_main" source="x_infte_esm_sp_esm">3a8ff870dbc41b00fbaa7d668c9619ff</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="esm_sp_esm_main">3a8ff870dbc41b00fbaa7d668c9619ff</sys_scope>
+        <sys_update_name>m2m_sp_theme_css_include_30d90d78dbc41b00fbaa7d668c9619bf</sys_update_name>
+        <sys_updated_by>divya</sys_updated_by>
+        <sys_updated_on>2018-01-31 11:43:34</sys_updated_on>
+    </m2m_sp_theme_css_include>
+</record_update>

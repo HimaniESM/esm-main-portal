@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function($scope,$window) {
+  /* widget controller */
+  var c = this;
+	
+  $scope.persona=$scope.user.u_persona;
+		
+} ]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.part{
+  height:220px; 
+  background-color:#eaebed;
+  margin-left:-10px;
+  margin-right:-10px;
+  border:0;
+  border-bottom:0;
+  border-left:0;
+  padding-left:20px;
+  padding-right:20px;
+  text-align : center;
+  //width : 100%;
+  margin-bottom: 20px;
+}
+
+.tile:hover
+{
+    box-shadow: 0px 0px 10px #5c6369;
+   
+    z-index: 1;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.1);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.1);   
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.1);
+    transition: all 200ms ease-in;
+    transform: scale(1.04);
+}
+
+
+.part1{
+   padding-left:10px;
+  padding-right:10px;
+  padding-bottom : 10px;
+  padding-top : 10px;
+ // margin-left:-10px;
+  //margin-right:-10px;
+  text-align : center;
+
+  
+  
+  //background-color : transparent;
+}
+
+span{
+  //color : #48888c;
+  color : #e8e8e8;
+   font-size: 15pt; 
+  font-family: calibri;
+  height : 80px;
+}
+
+.desc{
+  font-size: 12pt; 
+  font-family: calibri;
+}
+
+
+.row{
+   margin-right: 50px;
+    margin-left: 50px;
+  padding-left : 40px;
+  padding-right : 40px;
+}
+
+img{
+  height : 75px;
+}
+/******************** Persona *********************/
+.tile{
+  height : 210px;
+  //background : #632d2d;
+  border-radius : 5px;
+ 	transition : 0.5s;
+  transition-timing-function: ease-out;
+}
+
+/*.tile#ts{
+   height : 210px;
+   background-color:  rgba(6, 47, 79,0.9);
+   border-radius : 5px;
+ 		transition : 0.5s;
+  	transition-timing-function: ease-out;
+}
+
+.tile#bu{
+   height : 210px;
+   background-color: rgba(73, 39, 74,0.8);
+   border-radius : 5px;
+ 		transition : 0.5s;
+  	transition-timing-function: ease-out;
+}
+
+.tile#ex{
+   height : 210px;
+    background-color: rgba(219, 81, 2,0.8);
+   border-radius : 5px;
+ 		transition : 0.5s;
+  	transition-timing-function: ease-out;
+}
+
+.tile#am{
+   height : 210px;
+   background-color: rgba(3, 20, 36,0.9);
+   border-radius : 5px;
+ 		transition : 0.5s;
+  	transition-timing-function: ease-out;
+}
+
+.tile#cl{
+   height : 210px;
+  background-color: rgba(63, 50, 80,0.8);
+   border-radius : 5px;
+ 		transition : 0.5s;
+  	transition-timing-function: ease-out;
+}*/
+
+</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>service_catalog</id>
+        <internal>false</internal>
+        <link/>
+        <name>ESM SP Service Catalog</name>
+        <option_schema>[{"displayValue":"Category","hint":"Select the categories to be displayed in the portal","name":"categories","display_value_list":[],"section":"Data","label":"Categories","type":"glide_list","value":"sc_category","ed":{"reference":"sc_category"}}]</option_schema>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+	data.user = gs.getUserID();
+	data.categoryArray = [];
+	var grCategories = new GlideRecord('sc_category');
+	var query = 'sys_idIN'+ options.categories;
+	grCategories.addEncodedQuery(query);
+	grCategories.orderBy('title');
+	grCategories.query();
+	
+	while(grCategories.next()){
+	catObj = {};
+	catObj.title = grCategories.getValue('title');
+	catObj.desc = grCategories.getValue('description');
+	catObj.link = '?id=category&sys_id=' + grCategories.sys_id;
+	catObj.img = grCategories.getDisplayValue('homepage_image');
+	data.categoryArray.push(catObj);
+	}
+	
+	/*************** Persona *****************/
+	var user = new GlideRecord('sys_user');
+	user.addQuery('sys_id',data.user);
+	user.query();
+	
+	while(user.next()){
+		var personaCode = user.getDisplayValue('u_persona');
+		data.personaColor = '';
+				
+		if(personaCode){
+			var persona = new GlideRecord('x_infte_esm_sp_esm_esm_main_portal_persona_table');
+			persona.addQuery('u_persona_code',personaCode);
+			persona.query();
+			
+			while(persona.next()){
+				data.personaColor = persona.getDisplayValue('u_color');
+			}
+		}
+		else{
+			data.personaColor = '#632d2d';
+		}
+	}
+	
+	/************ End of Persona *************/
+	
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>Manjeet_Kumar</sys_created_by>
+        <sys_created_on>2018-02-01 09:22:06</sys_created_on>
+        <sys_id>fe237989db805b007b9b9ea3db96195b</sys_id>
+        <sys_mod_count>105</sys_mod_count>
+        <sys_name>ESM SP Service Catalog</sys_name>
+        <sys_package display_value="esm_sp_esm_main" source="x_infte_esm_sp_esm">3a8ff870dbc41b00fbaa7d668c9619ff</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="esm_sp_esm_main">3a8ff870dbc41b00fbaa7d668c9619ff</sys_scope>
+        <sys_update_name>sp_widget_fe237989db805b007b9b9ea3db96195b</sys_update_name>
+        <sys_updated_by>divya</sys_updated_by>
+        <sys_updated_on>2018-03-06 13:28:14</sys_updated_on>
+        <template><![CDATA[<br/>
+<div class="row"> 
+   
+</div>
+<br/> 
+
+<div class="row">
+ 
+     <div class="col-md-4 part1" ng-repeat='cat in data.categoryArray'>
+   <a ng-href={{cat.link}}>
+     	<div class="tile" style='background-color: {{data.personaColor}}'>
+        <br/>
+         <center><img src="{{cat.img}}"/> </center>
+         <span>{{cat.title}}</span><br/>
+         <br/>
+         <span class="desc">{{cat.desc}}</span>
+         <br/>
+         <br/>
+      </div>
+     
+   </a>
+ 
+  </div>
+ 
+
+  <!--
+   <a href="?id=category&sys_id=66207881db572200cc727fcfbf961977">
+   <div class="col-md-4 part1">
+     <div class="tile" ng-attr-id={{persona}}>
+      <br/>
+      <center><img src="esm_icon1.jpg"/> </center>
+      <span>Onboarding & Offboarding</span><br/>
+      <br/>
+      <span class="desc">One stop shop for rolling on new hires and expediting company departures</span>
+      <br/>
+      <br/>
+     </div>
+   </div>
+  </a>
+  <a href="?id=category&sys_id=a8835605dbd72200cc727fcfbf961914">
+   <div class="col-md-4 part1">
+     <div class="tile" ng-attr-id={{persona}}>
+      <br/>
+      <center><img src="esm_icon12.jpg"/> </center>
+      <span>Personal Computing Services</span><br/>
+      <br/>
+      <span class="desc">Get your Laptop, Desktop, Phone with upto date softwares</span>
+      <br/>
+      <br/>
+     </div>
+   </div>
+  </a>
+</div>
+  
+<div class="row">
+  <a href="?id=category&sys_id=16cd63fcdb232200cc727fcfbf9619a2">
+   <div class="col-md-4 part1"> 
+     <div class="tile" ng-attr-id={{persona}}>
+      <br/>
+      <center><img src="esm_icon20.jpg"/> </center>
+      <span>Facilities & Logistics Services</span><br/>
+      <br/>
+      <span class="desc">Services related to conference setup, office transfers, projector and 
+      printer accessories etc</span>
+      <br/>
+      <br/>
+     </div>
+   </div>
+  </a>
+  <a href="?id=category&sys_id=2d5462a6db9f6200cc727fcfbf96197a">
+   <div class="col-md-4 part1">
+     <div class="tile" ng-attr-id={{persona}}>
+      <br/>
+      <center><img src="esm_icon18.jpg"/> </center>
+      <span>Communication & Collaboration Services</span><br/>
+      <br/>
+      <span class="desc">Explore your ways for knowledge sharing and communication</span>
+      <br/>
+      <br/>
+     </div>
+   </div>
+  </a>
+  <a href="?id=category&sys_id=a039c601dbd72200cc727fcfbf961994">
+   <div class="col-md-4 part1">
+     <div class="tile" ng-attr-id={{persona}}>
+      <br/>
+      <center><img src="esm_icon19.jpg"/> </center>
+      <span>Can we Help You?</span><br/>
+      <br/>
+      <span class="desc">Disappointed? not able to find your relevant category.
+      Please reach out to us here</span>
+      <br/>
+      <br/>
+     </div>
+   </div>
+  </a>
+-->
+</div>]]></template>
+    </sp_widget>
+</record_update>

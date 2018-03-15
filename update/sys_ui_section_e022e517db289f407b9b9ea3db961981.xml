@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_ui_section caption="" section_id="e022e517db289f407b9b9ea3db961981" sys_domain="global" table="x_infte_esm_sp_esm_esm_main_portal_persona_table" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.begin_split</element>
+            <position>0</position>
+            <sys_created_by>divya</sys_created_by>
+            <sys_created_on>2018-03-05 04:25:23</sys_created_on>
+            <sys_id>a022e517db289f407b9b9ea3db961987</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_infte_esm_sp_esm_esm_main_portal_persona_table" sys_domain="global" view="Default view">e022e517db289f407b9b9ea3db961981</sys_ui_section>
+            <sys_updated_by>divya</sys_updated_by>
+            <sys_updated_on>2018-03-05 04:25:23</sys_updated_on>
+            <sys_user/>
+            <type>.begin_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_name</element>
+            <position>1</position>
+            <sys_created_by>divya</sys_created_by>
+            <sys_created_on>2018-03-05 04:25:23</sys_created_on>
+            <sys_id>2822e517db289f407b9b9ea3db961987</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_infte_esm_sp_esm_esm_main_portal_persona_table" sys_domain="global" view="Default view">e022e517db289f407b9b9ea3db961981</sys_ui_section>
+            <sys_updated_by>divya</sys_updated_by>
+            <sys_updated_on>2018-03-05 04:25:23</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>2</position>
+            <sys_created_by>divya</sys_created_by>
+            <sys_created_on>2018-03-05 04:25:23</sys_created_on>
+            <sys_id>a822e517db289f407b9b9ea3db961987</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_infte_esm_sp_esm_esm_main_portal_persona_table" sys_domain="global" view="Default view">e022e517db289f407b9b9ea3db961981</sys_ui_section>
+            <sys_updated_by>divya</sys_updated_by>
+            <sys_updated_on>2018-03-05 04:25:23</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_color</element>
+            <position>3</position>
+            <sys_created_by>divya</sys_created_by>
+            <sys_created_on>2018-03-05 04:25:23</sys_created_on>
+            <sys_id>2c22e517db289f407b9b9ea3db961987</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_infte_esm_sp_esm_esm_main_portal_persona_table" sys_domain="global" view="Default view">e022e517db289f407b9b9ea3db961981</sys_ui_section>
+            <sys_updated_by>divya</sys_updated_by>
+            <sys_updated_on>2018-03-05 04:25:23</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.end_split</element>
+            <position>4</position>
+            <sys_created_by>divya</sys_created_by>
+            <sys_created_on>2018-03-05 04:25:23</sys_created_on>
+            <sys_id>ac22e517db289f407b9b9ea3db961987</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_infte_esm_sp_esm_esm_main_portal_persona_table" sys_domain="global" view="Default view">e022e517db289f407b9b9ea3db961981</sys_ui_section>
+            <sys_updated_by>divya</sys_updated_by>
+            <sys_updated_on>2018-03-05 04:25:23</sys_updated_on>
+            <sys_user/>
+            <type>.end_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_description</element>
+            <position>5</position>
+            <sys_created_by>divya</sys_created_by>
+            <sys_created_on>2018-03-05 04:25:23</sys_created_on>
+            <sys_id>2022e517db289f407b9b9ea3db961988</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_infte_esm_sp_esm_esm_main_portal_persona_table" sys_domain="global" view="Default view">e022e517db289f407b9b9ea3db961981</sys_ui_section>
+            <sys_updated_by>divya</sys_updated_by>
+            <sys_updated_on>2018-03-05 04:25:23</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_logo</element>
+            <position>6</position>
+            <sys_created_by>divya</sys_created_by>
+            <sys_created_on>2018-03-05 04:25:23</sys_created_on>
+            <sys_id>a022e517db289f407b9b9ea3db961988</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_infte_esm_sp_esm_esm_main_portal_persona_table" sys_domain="global" view="Default view">e022e517db289f407b9b9ea3db961981</sys_ui_section>
+            <sys_updated_by>divya</sys_updated_by>
+            <sys_updated_on>2018-03-05 04:25:23</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_persona_code</element>
+            <position>7</position>
+            <sys_created_by>divya</sys_created_by>
+            <sys_created_on>2018-03-05 04:25:23</sys_created_on>
+            <sys_id>2422e517db289f407b9b9ea3db961988</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_infte_esm_sp_esm_esm_main_portal_persona_table" sys_domain="global" view="Default view">e022e517db289f407b9b9ea3db961981</sys_ui_section>
+            <sys_updated_by>divya</sys_updated_by>
+            <sys_updated_on>2018-03-05 04:25:23</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption/>
+            <header>false</header>
+            <name>x_infte_esm_sp_esm_esm_main_portal_persona_table</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>divya</sys_created_by>
+            <sys_created_on>2018-03-05 04:25:23</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>e022e517db289f407b9b9ea3db961981</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_infte_esm_sp_esm_esm_main_portal_persona_table</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="esm_sp_esm_main" source="x_infte_esm_sp_esm">3a8ff870dbc41b00fbaa7d668c9619ff</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="esm_sp_esm_main">3a8ff870dbc41b00fbaa7d668c9619ff</sys_scope>
+            <sys_update_name>sys_ui_section_e022e517db289f407b9b9ea3db961981</sys_update_name>
+            <sys_updated_by>divya</sys_updated_by>
+            <sys_updated_on>2018-03-05 04:25:23</sys_updated_on>
+            <sys_user/>
+            <title>true</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

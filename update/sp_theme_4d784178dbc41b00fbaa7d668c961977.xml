@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_theme">
+    <sp_theme action="INSERT_OR_UPDATE">
+        <css_variables/>
+        <footer display_value="ESM_SP_ESS_Footer">f2c48db4dbc41b00fbaa7d668c9619c3</footer>
+        <footer_fixed>true</footer_fixed>
+        <header display_value="Copy of ESM SP ESS Header">760a1612dba81f407b9b9ea3db961924</header>
+        <name>esm_sp_esm_main</name>
+        <navbar_fixed>true</navbar_fixed>
+        <sys_class_name>sp_theme</sys_class_name>
+        <sys_created_by>divya</sys_created_by>
+        <sys_created_on>2018-01-31 11:37:24</sys_created_on>
+        <sys_id>4d784178dbc41b00fbaa7d668c961977</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>esm_sp_esm_main</sys_name>
+        <sys_package display_value="esm_sp_esm_main" source="x_infte_esm_sp_esm">3a8ff870dbc41b00fbaa7d668c9619ff</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="esm_sp_esm_main">3a8ff870dbc41b00fbaa7d668c9619ff</sys_scope>
+        <sys_update_name>sp_theme_4d784178dbc41b00fbaa7d668c961977</sys_update_name>
+        <sys_updated_by>divya</sys_updated_by>
+        <sys_updated_on>2018-03-02 05:58:14</sys_updated_on>
+    </sp_theme>
+</record_update>

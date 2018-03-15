@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function() {
+  /* widget controller */
+  var c = this;
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>#heading a{
+  color : #fff;
+  font-family : calibri;
+  font-weight : bold;
+  font-size : 15px;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>catalog_items_page</id>
+        <internal>false</internal>
+        <link/>
+        <name>ESM SP Catalog Items Page</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+	
+	data.catalogItem = [];
+	data.category = []
+	data.parentCategory = [];
+	data.parentId = [];
+	
+	var documentKey = $sp.getParameter('sys_id');
+	
+	var gr = new GlideRecord('sc_cat_item');
+	gr.addQuery('sys_id',documentKey);
+	gr.addActiveQuery();
+	gr.query();
+	
+	while(gr.next()){
+		object = {};
+		object.category = gr.getValue('category');
+		object.categoryName = gr.getDisplayValue('category');
+		object.item = gr.getDisplayValue('name');
+				var cat = new GlideRecord('sc_category');
+				cat.addQuery('sys_id',object.category);
+				cat.addActiveQuery();
+				cat.query();
+		
+				while(cat.next()){
+					object1 = {};
+					
+					object1.parent = cat.getValue('parent');
+							var parentCat = new GlideRecord('sc_category');
+							parentCat.addQuery('sys_id',object1.parent);
+							parentCat.addActiveQuery();
+							parentCat.query();
+					
+							while(parentCat.next()){
+								object2 = {};
+								
+								object2.id = parentCat.getValue('sys_id');
+								
+								data.parentId.push(object2);
+							}
+					
+					data.parentCategory.push(object1);
+				}
+		
+		if(data.parentId.length==0){
+			obj ={};
+			
+			obj.id = cat.getValue('sys_id');
+			
+			data.catalogItem.push(obj);
+			
+	}
+		
+		data.category.push(object);
+	}
+	
+	
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>Manjeet_Kumar</sys_created_by>
+        <sys_created_on>2018-02-01 10:28:08</sys_created_on>
+        <sys_id>86420605dbc05b007b9b9ea3db9619cc</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>ESM SP Catalog Items Page</sys_name>
+        <sys_package display_value="esm_sp_esm_main" source="x_infte_esm_sp_esm">3a8ff870dbc41b00fbaa7d668c9619ff</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="esm_sp_esm_main">3a8ff870dbc41b00fbaa7d668c9619ff</sys_scope>
+        <sys_update_name>sp_widget_86420605dbc05b007b9b9ea3db9619cc</sys_update_name>
+        <sys_updated_by>Manjeet_Kumar</sys_updated_by>
+        <sys_updated_on>2018-02-01 10:29:38</sys_updated_on>
+        <template><![CDATA[<br/> 
+
+<div ng-repeat="val in data.category" id="heading" ng-if="data.parentId.length==0">
+  <a href="./?id=service_catalog"> {{val.categoryName}} |</a> 
+ 
+  <span ng-repeat="value in data.catalogItem">
+  <a href="./?id=category&sys_id={{value.id}}">{{val.item}} </a>
+  </span>
+</div>
+
+<div ng-if="data.parentId.length>0">
+<div ng-repeat="val in data.category" id="heading">
+  <span ng-repeat = "cat in data.parentCategory">
+  <a href="./?id=service_catalog"> {{cat.parent}} |</a>
+  </span> 
+  <span ng-repeat="parent in data.parentId">
+  <a href="./?id=category&sys_id={{parent.id}}">{{val.category}} </a>
+  </span>
+</div>
+</div>
+<br/>]]></template>
+    </sp_widget>
+</record_update>

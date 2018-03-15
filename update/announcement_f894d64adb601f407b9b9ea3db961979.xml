@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="announcement">
+    <announcement action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <click_target/>
+        <details/>
+        <details_link_text/>
+        <details_page/>
+        <details_url/>
+        <dismiss_options>session_dismissible</dismiss_options>
+        <display_first>false</display_first>
+        <display_style display_value="Urgent">339ea11ae7d4030075c2a117c2f6a9cf</display_style>
+        <from>2018-03-01 10:53:39</from>
+        <glyph>check</glyph>
+        <glyph_alt_text/>
+        <name>hello_World</name>
+        <public>true</public>
+        <roles/>
+        <summary/>
+        <sys_class_name>announcement</sys_class_name>
+        <sys_created_by>DIVYA</sys_created_by>
+        <sys_created_on>2018-03-01 10:54:15</sys_created_on>
+        <sys_id>f894d64adb601f407b9b9ea3db961979</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>hello_World</sys_name>
+        <sys_package display_value="esm_sp_esm_main" source="x_infte_esm_sp_esm">3a8ff870dbc41b00fbaa7d668c9619ff</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="esm_sp_esm_main">3a8ff870dbc41b00fbaa7d668c9619ff</sys_scope>
+        <sys_update_name>announcement_f894d64adb601f407b9b9ea3db961979</sys_update_name>
+        <sys_updated_by>DIVYA</sys_updated_by>
+        <sys_updated_on>2018-03-01 10:58:39</sys_updated_on>
+        <title>Hello World</title>
+        <to>2018-03-02 10:53:44</to>
+        <type>67eaf134e7a3320075c2a117c2f6a9d2,52fa79f8e763320075c2a117c2f6a991</type>
+    </announcement>
+</record_update>

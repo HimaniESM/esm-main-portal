@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sp_instance_menu">
+    <sp_instance_menu action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <glyph/>
+        <id/>
+        <order>1</order>
+        <roles/>
+        <short_description/>
+        <size>md</size>
+        <sp_column/>
+        <sp_widget display_value="Header Menu">5ef595c1cb12020000f8d856634c9c6e</sp_widget>
+        <sys_class_name>sp_instance_menu</sys_class_name>
+        <sys_created_by>divya</sys_created_by>
+        <sys_created_on>2018-02-28 10:58:37</sys_created_on>
+        <sys_id>c80c413ddb64db407b9b9ea3db961942</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>ESM Main Header Menu</sys_name>
+        <sys_package display_value="esm_sp_esm_main" source="x_infte_esm_sp_esm">3a8ff870dbc41b00fbaa7d668c9619ff</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="esm_sp_esm_main">3a8ff870dbc41b00fbaa7d668c9619ff</sys_scope>
+        <sys_update_name>sp_instance_menu_c80c413ddb64db407b9b9ea3db961942</sys_update_name>
+        <sys_updated_by>divya</sys_updated_by>
+        <sys_updated_on>2018-03-02 09:38:52</sys_updated_on>
+        <title>ESM Main Header Menu</title>
+        <url/>
+        <widget_parameters><![CDATA[{
+	"enable_cart": {
+		"displayValue": "true",
+		"value": true
+	},
+      "enable_wishlist": {
+        "displayValue": "true",
+          "value": true
+      }
+}]]></widget_parameters>
+    </sp_instance_menu>
+    <sys_translated_text action="delete_multiple" query="documentkey=c80c413ddb64db407b9b9ea3db961942"/>
+</record_update>
